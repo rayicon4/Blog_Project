@@ -11,8 +11,14 @@ this is the home page
 
 
 
+
+
 create a post
 ![image007](https://user-images.githubusercontent.com/107572914/180591256-1e17bb9c-4171-4646-b66e-96c38301e263.jpg)
+
+
+
+
 
 login section
 ![image003](https://user-images.githubusercontent.com/107572914/180591941-bce3ad46-1f11-41aa-ad30-e25b9e6f0350.jpg)
