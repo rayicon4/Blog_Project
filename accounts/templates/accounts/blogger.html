@@ -79,30 +79,5 @@
 <br>
 <br>
 <br>
-{{blog.user.id}}
-{% for tem in pi %}
-{% if request.user.id == user.id %}
-<h6>Feedback: they are they same</h6>
-{% else %}
-<div>we are NEVER the same</div>
-{% endif %}
 
-<div>request.user.id: {{request.user.id}}</div>
-<div>user id: {{tem.user.id}}</div>
-<div>testing it -user.username: {{user.username}}</div>
-<div>author id-tem.user: {{tem.user}}</div>
-<div>author: {{tem.author}}</div>
-<div>blog id: {{tem.username}}</div>
-<br>
-<hr>
-
-
-{% endfor %}
-
-
-{% if request.user != Blog.username %}
-<div>working</div>
-{% else %}
-<div>not working</div>
-{% endif %}
 {% endblock %}
