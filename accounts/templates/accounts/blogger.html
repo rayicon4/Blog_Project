@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Make a Post</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static './assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      #tan {
+        color: whitesmoke;
+        background-color: rgb(147, 240, 147);
+      }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'signin.css' %}" rel="stylesheet">
+  </head>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <body class="text-center">
+    <div class="text-left">
+    <div><strong> User: {{request.user}}</strong></div>
+ <form class="form-signin" method="POST">
+        {% csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal">Please make a post</h1>
+    {% for message in messages %}
+    <div id="tan">{{message}}</div>
+    {% endfor %}
+  <div><strong>Title: </strong></div>
+  <div>{{zin.title}}</div><br>
+  <div><strong>Content</strong></div>
+  <div>{{zin.content}}</div><br>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2019-2022</p>
+</form>
+
+</div>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+{{blog.user.id}}
+{% for tem in pi %}
+{% if request.user.id == user.id %}
+<h6>Feedback: they are they same</h6>
+{% else %}
+<div>we are NEVER the same</div>
+{% endif %}
+
+<div>request.user.id: {{request.user.id}}</div>
+<div>user id: {{tem.user.id}}</div>
+<div>testing it -user.username: {{user.username}}</div>
+<div>author id-tem.user: {{tem.user}}</div>
+<div>author: {{tem.author}}</div>
+<div>blog id: {{tem.username}}</div>
+<br>
+<hr>
+
+
+{% endfor %}
+
+
+{% if request.user != Blog.username %}
+<div>working</div>
+{% else %}
+<div>not working</div>
+{% endif %}
+{% endblock %}

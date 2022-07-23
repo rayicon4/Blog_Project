@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if searched %}
+<h3>You searched for {{search}}</h3>
+
+{% else %}
+<h3>You didnt search for anything</h3>
+{% endif %}
+
+
+{% for res in result %}
+
+<a href="{% url 'blog' res.id %}">{{res}}</a>
+
+{% endfor %}
+
+{% endblock %}

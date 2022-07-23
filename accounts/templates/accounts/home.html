@@ -1,0 +1,263 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>My Blog Project</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static './assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      #diva {
+        position: relative;
+        text-align: center;
+        color: white;
+      }
+
+      .top-left {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        margin-right: 700px;
+      }
+
+      #footer {
+        position: center;
+      }
+
+      .center {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+      }
+
+      .normal {
+        font-weight: 0px;
+        font-size: medium;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'blog.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        <a class="text-muted" href="{% url 'register' %}">Subscribe</a>
+      </div>
+      <div class="col-4 text-center">
+        <a class="blog-header-logo text-dark" href="#"><h3>My Blog Project</h3></a>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        {% if user.is_authenticated %}
+          <div><strong>Hello {{request.user}}...</strong></div> &nbsp; &nbsp;    
+        {% else %}
+        {% endif%}
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'register' %}">Sign up</a>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'login' %}">Sign in</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <div class="text-right">
+    {% if user.is_authenticated %}
+      <a class="p-2 text-muted" href="{% url 'blogger' %}">Blog</a>
+      <a class="p-2 text-muted" href="{% url 'success' %}">Profile</a>
+      <a class="p-2 text-muted" href="#">About us</a>
+      <a class="p-2 text-muted" href="{% url 'logout' %}">logout</a>
+    {% else %}
+    <div><i>sign in or sign up</i></div>
+    {% endif %} 
+ </div>
+
+
+  <div id="diva">
+    <img src="{% static './assets/img/blogphoto.jpg' %}" width="1100" height="500" alt="">
+    <div class="top-left" class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">My Blog Project</h1>
+      <p class="lead my-3">This is a simple blog I built to showcase in my portfolio. It contains the basic blog features and is still under improvement.
+        It contains dynamic posts which can be manipulated, account creation and so on...
+      </p>
+      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Posts...
+      </h3>
+
+        <!-- <h5 class="normal">
+         {% if user.is_authenticated %}
+        <a href="{% url 'blogger' %}">Write a Post</a>
+        {% else %}
+        <h5>sign up to make a post.</h5>
+        {% endif %}
+     
+        </h5> -->
+      
+       {% for lit in pokemon %}
+      <div class="blog-post">
+        <h2 class="blog-post-title">{{lit.title}}</h2>
+        <p class="blog-post-meta">{{lit.created}} by 
+          {% if user.is_authenticated %} <a href="{% url 'success' %}">{{lit.author}}</a> 
+          {% else %} <a href="#">{{lit.author}}</a> 
+          {% endif %}</p>
+
+
+        <p>{{lit.content}}</p>
+        
+        {% if user.is_authenticated %}
+        {% if request.user == superuser %}
+        <a href="{% url 'editblog' lit.id %}">Edit Post</a> | <a href="{% url 'deleteblog' lit.id %}">Delete Post</a> | <a href="{% url 'comment' lit.id %}">Comments</a>
+        {% else %}
+        <a href="{% url 'comment' lit.id %}">Comments</a>
+        {% endif %}
+        {% else %} <a href="{% url 'comment' lit.id %}">Comments</a>
+        {% endif %}
+        <hr>
+       
+      </div><!-- /.blog-post -->
+      {% endfor %}
+      {% if request.user == Superuser %}
+      <div>i a diva</div>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+
+      <a href="{% url 'blogger' %}">Write a Post</a>
+
+      {% else %}
+
+      <div>sign up to make a post.</div>
+
+      {% endif %}
+
+     
+
+
+
+      <!-- <nav class="blog-pagination">
+        <a class="btn btn-outline-primary" href="#">Older</a>
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+      </nav> -->
+
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0">This blog project <em>was designed to showcase</em> my skills using django. This blog is built with django, using its components.
+        Users can sign up and create their profile then put their details into their profiles 
+        and have more access to the blog when they are authenticated.</p>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+          <li><a href="#">March 2014</a></li>
+          <li><a href="#">February 2014</a></li>
+          <li><a href="#">January 2014</a></li>
+          <li><a href="#">December 2013</a></li>
+          <li><a href="#">November 2013</a></li>
+          <li><a href="#">October 2013</a></li>
+          <li><a href="#">September 2013</a></li>
+          <li><a href="#">August 2013</a></li>
+          <li><a href="#">July 2013</a></li>
+          <li><a href="#">June 2013</a></li>
+          <li><a href="#">May 2013</a></li>
+          <li><a href="#">April 2013</a></li>
+        </ol>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Elsewhere</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+<br>
+<br>
+<br>
+<br>
+<footer id="footer" >
+  <div class="container" >
+    <div class="center" class="col-md-6 px-0"></div>
+  <p>Blog built for <a href="https://getbootstrap.com/">My Portfolio</a> by <a href="https://twitter.com/mdo">Raymond Iwobi</a>.</p>
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</div>
+</div>
+</footer>
+</body>
+</html>

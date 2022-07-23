@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<h4>You can edit this post here. Please make the changes in the form below.</h4>
+<hr>
+<form method="POST">
+    {% csrf_token %}
+    <div><strong>Title:</strong>  &nbsp;</div>{{trak.title}}<br><br>
+    <div><strong>Content:</strong> (drag the box to expand it.)</div>{{trak.content}}<br><br>
+    <input type="submit" value="Post">
+</form>
+<br>
+
+<div>You change your mind? <a href="{% url 'home' %}">Back to main Page</a></div>
+
+
+{% endblock %}

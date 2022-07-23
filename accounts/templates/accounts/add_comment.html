@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{com.comment}}<br><br>
+    <input type="submit" value="Comment">
+</form>
+
+
+{% endblock %}

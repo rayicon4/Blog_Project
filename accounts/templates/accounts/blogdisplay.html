@@ -1,0 +1,16 @@
+
+
+<h2>Posts...</h2>
+<hr>
+<hr>
+
+{% for  sim in pin %}
+<h3>Title: {{sim.title}}</h3>
+<h4>Content: {{sim.content}}</h4>
+<h5>Created by: {{sim.users.first_name}} {{sim.users.last_name}} Date: {{sim.created}}</h5>
+<br>
+<hr>
+{% endfor %}
+
+
+
