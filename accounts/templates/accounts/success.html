@@ -161,9 +161,22 @@ h5 {
 .tab-card-header > .tab-content {
   padding-bottom: 0;
 }
+
+#tan {
+        color: whitesmoke;
+        background-color: rgb(147, 240, 147);
+      }
+
       </style>
     </head>
     <body>
+      <div class="text-center">
+        {% for message in messages %}
+        <h5><div id="tan">{{message}}</div></h5>
+        {% endfor %}
+      </div>
+    
+      
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
@@ -184,6 +197,8 @@ h5 {
                                 <div><strong>Website: </strong>{{user.userprofile.website}}</div>
                               </div>
                           </div>
+                         
+                          
                            <!--<div class="card-footer">
                               <small>Last updated 3 mins ago</small>
                               <button class="btn btn-secondary float-right btn-sm">show</button>

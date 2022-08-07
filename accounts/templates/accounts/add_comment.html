@@ -1,13 +1,77 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 
 {% block content %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{com.comment}}<br><br>
-    <input type="submit" value="Comment">
-</form>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Make a Post</title>
 
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static './assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      #tan {
+        color: whitesmoke;
+        background-color: rgb(147, 240, 147);
+      }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'signin.css' %}" rel="stylesheet">
+  </head>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <body class="text-center">
+    <div class="text-left">
+    <div><strong>  User: {{request.user}}</strong></div>&nbsp; &nbsp;
+ <form method="POST">
+        {% csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal">Please post a comment</h1>
+    {% for message in messages %}
+    <div id="tan">{{message}}</div>
+    {% endfor %}
+  <div><strong>Comment</strong></div>
+  <div>{{com.comment}}</div><br>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Comment</button>
+</form>
+ <p class="mt-5 mb-3 text-muted">&copy; 2019-2022</p>
+</div>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}
+

@@ -92,6 +92,7 @@
       <a class="p-2 text-muted" href="{% url 'success' %}">Profile</a>
       <a class="p-2 text-muted" href="#">About us</a>
       <a class="p-2 text-muted" href="{% url 'logout' %}">logout</a>
+      <a class="p-2 text-muted" href="{% url 'profilepage' %}">profilepage</a>
     {% else %}
     <div><i>sign in or sign up</i></div>
     {% endif %} 
@@ -173,9 +174,9 @@
         {% if request.user == superuser %}
         <a href="{% url 'editblog' lit.id %}">Edit Post</a> | <a href="{% url 'deleteblog' lit.id %}">Delete Post</a> | <a href="{% url 'comment' lit.id %}">Comments</a>
         {% else %}
-        <a href="{% url 'comment' lit.id %}">Comments</a>
+        <a href="{% url 'comments' lit.id %}">Comments</a>
         {% endif %}
-        {% else %} <a href="{% url 'comment' lit.id %}">Comments</a>
+        {% else %} <a href="{% url 'comments' lit.id %}">Comments</a>
         {% endif %}
         <hr>
        
@@ -252,7 +253,7 @@
 <footer id="footer" >
   <div class="container" >
     <div class="center" class="col-md-6 px-0"></div>
-  <p>Blog built for <a href="https://getbootstrap.com/">My Portfolio</a> by <a href="https://twitter.com/mdo">Raymond Iwobi</a>.</p>
+  <p>Blog built for <a href="#">My Portfolio</a> by <a href="#">Raymond Iwobi</a>.</p>
   <p>
     <a href="#">Back to top</a>
   </p>

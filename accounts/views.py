@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import Blog #, UserProfile
+from .models import Blog, UserProfile, ProfileModels, commentmodel
 from .forms import registrationform, editform, mandateform, blogcomment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -99,9 +99,10 @@ def deleteblog(request, pk):
 
 @login_required
 def success(request):
-    #strong = UserProfile.objects.all()
-
-    return render(request, 'accounts/success.html')#, {'strong':strong})
+    strong = UserProfile.objects.all()
+    messages.success(request, 'Welcome to your profile. Please complete your profile info if you have not done so.')
+    
+    return render(request, 'accounts/success.html', {'strong':strong})
 
 
 
@@ -127,40 +128,38 @@ def logouts(request):
     return redirect('/')
     #return render(request, 'accounts/home.html')
 
-def comment(request, pk):
+def comments(request, pk):
     flax = Blog.objects.get(id=pk)
 
     #dlux = commentmodel.objects.all()
 
-    com = blogcomment(instance=flax)
-    if request.method == 'POST':
-        com = blogcomment(request.POST, instance=flax)
-        if com.is_valid():
-            com.save(commit=False)
-            #com.blog = request.blog
-            com.author = request.user.first_name + " " + request.user.last_name
-            com.comment = com.cleaned_data['comment']
-            com.created = datetime.now()
-            com.save()
-            return redirect('comment')
+    # com = blogcomment(instance=flax)
+    # if request.method == 'POST':
+    #     com = blogcomment(request.POST, instance=flax)
+    #     if com.is_valid():
+    #         com.save(commit=False)
+    #         #com.blog = request.blog
+    #         com.author = request.user.first_name + " " + request.user.last_name
+    #         com.comment = com.cleaned_data['comment']
+    #         com.created = datetime.now()
+    #         com.save()
+    #         return redirect('comment')
 
     context = {'flax':flax}
     return render(request, 'accounts/comment.html', context)
 
-def add_comment(request, id):
-    flixe = Blog.objects.get(id=id)
+def add_comment(request, pk):
+    flixe = Blog.objects.get(id=pk)
 
     com = blogcomment(instance=flixe)
     if request.method == 'POST':
         com = blogcomment(request.POST, instance=flixe)
         if com.is_valid():
-            com.save(commit=False)
-            #com.blog = request.blog
-            com.author = request.user.first_name + " " + request.user.last_name
-            com.comment = com.cleaned_data['comment']
-            com.created = datetime.now()
+            name = request.user
+            body = com.cleaned_data['comment']
+            com = commentmodel(blog=flixe, author=name, comment=body, created=datetime.now())
             com.save()
-            return redirect('comment')
+            return redirect('home') 
 
     context = {'flixe':flixe, 'com':com}
     return render(request, 'accounts/add_comment.html', context)
@@ -197,6 +196,12 @@ def changepassword(request):
             return redirect('changepassword')
     context = {'form':form}
     return render(request, 'accounts/changepassword.html', context)
+
+def profilepage(request):
+    profilep = ProfileModels.objects.all()
+
+    context = {'profilep':profilep}
+    return render(request, 'accounts/profilepage.html', context)
 
 
 # def profileinfo(request):

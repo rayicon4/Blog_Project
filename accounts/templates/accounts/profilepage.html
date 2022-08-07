@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div>user: {{request.user}}</div>
+<div>about me: {{user.profilemodels.image.url}} </div>
+<div>user: {{user.profilemodel.city}} </div>
+<div>city: {{user.profilemodel.phone}} </div>
+<div>phone: {{user.userprofile.phone}} </div>
+<div>image: {{user.profilemodel.image.url}} </div>
+
+
+
+
+{% for lo in profilep %}
+
+{{lo.aboutme}}
+
+{% endfor %}
+
+{% endblock %}

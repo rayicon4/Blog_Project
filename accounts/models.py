@@ -31,25 +31,34 @@ class commentmodel(models.Model):
 
     
 
-# class UserProfile(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     description = models.CharField(max_length=100, default='')
-#     city = models.CharField(max_length=30)
-#     website = models.URLField(default='', null=True)
-#     phone = models.IntegerField(default=0)
-#     #fileupload = models.FileField(upload_to='media')
-#     image = models.ImageField(default='default.ico', upload_to='profile_pics', blank=True)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    description = models.CharField(max_length=100, default='')
+    city = models.CharField(max_length=30)
+    website = models.URLField(default='', null=True)
+    phone = models.IntegerField(default=0)
+    #fileupload = models.FileField(upload_to='media')
+    image = models.ImageField(default='default.ico', upload_to='profile_pics', blank=True)
 
-#     # def __str__(self):
-#     #     return self.user
-
-
+    # def __str__(self):
+    #     return self.user
 
 
-# @receiver(post_save, sender=User)
-# def create_profile(sender, instance, created, **kwargs):
-#     if created:
-#         user_profile = UserProfile.objects.create(user=instance)
+class ProfileModels(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    aboutme = models.CharField(max_length=200, null=True)
+    city = models.CharField(max_length=100)
+    phone = models.CharField(max_length=13)
+    image=models.ImageField(default='default.ico', upload_to='profile_pics', blank=True)
+
+    
+
+
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        user_profile = UserProfile.objects.create(user=instance)
 
 
 # def create_profile(sender, **kwargs):

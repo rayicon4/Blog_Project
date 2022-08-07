@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (home, loging, success, logouts, register, 
 edit_form, changepassword, blogger, searchpage, blogdisplay, 
-editblog, deleteblog, comment, add_comment)
+editblog, deleteblog, comments, add_comment, profilepage)
 
 urlpatterns = [
     path('', home, name='home'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('blogdisplay/', blogdisplay, name='blogdisplay'),
     path('editblog/<int:pk>/', editblog, name='editblog'),
     path('deleteblog/<int:pk>/', deleteblog, name='deleteblog'),
-    path('comment/<int:pk>/', comment, name='comment'),
-    path('comment/<int:pk>/add_comment', add_comment, name='add_comment'),
+    path('comments/<int:pk>/', comments, name='comments'),
+    path('comments/<int:pk>/add-comment', add_comment, name='add-comment'),
+    path('profilepage/', profilepage, name='profilepage'),
 ]

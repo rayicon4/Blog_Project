@@ -106,20 +106,17 @@
     {% else %}
 
     {% for comment in flax.comments.all %}
-
-    <div></div>{{comment.content}}<br>
-    <div></div>{{comment.author}}<br>
     <div></div>{{comment.comment}}<br>
-    <div></div>{{comment.created}}<br>
-
+    <div><strong>created: </strong>{{comment.created}} <strong>by </strong>{{comment.author}}</div><br>
+    <hr>
     {% endfor %}
-
     {% endif %}
+    
     </div>
     <br>
-    <hr>
+  
     <div class="btn-btn-primary">
-    <a href="3">add comment</a>
+    <a href="{% url 'add-comment' flax.id %}">add comment</a>
     </div>
 
  
@@ -181,7 +178,7 @@
 <footer id="footer" >
   <div class="container" >
     <div class="center" class="col-md-6 px-0"></div>
-  <p>Blog built for <a href="https://getbootstrap.com/">My Portfolio</a> by <a href="https://twitter.com/mdo">Raymond Iwobi</a>.</p>
+  <p>Blog built for <a href="#">My Portfolio</a> by <a href="#">Raymond Iwobi</a>.</p>
   <p>
     <a href="#">Back to top</a>
   </p>
