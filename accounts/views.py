@@ -131,7 +131,7 @@ def logouts(request):
 def comments(request, pk):
     flax = Blog.objects.get(id=pk)
 
-    #dlux = commentmodel.objects.all()
+    #dlux = commentmodel.objects.all()s
 
     # com = blogcomment(instance=flax)
     # if request.method == 'POST':
